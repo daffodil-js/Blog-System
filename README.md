@@ -3,7 +3,7 @@ Blog-System
 
 Node.js Blog system
 
-##[Install all dependencies]
+##Install all dependencies
 
 - $ npm install
 - $ bower install
