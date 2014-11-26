@@ -5,5 +5,5 @@ Node.js Blog system
 
 ##[Install all dependencies]
 
--[$ npm install]
--[$ bower install]
+- [$ npm install]
+- [$ bower install]
