@@ -1,0 +1,11 @@
+{
+	"name": "Blog",
+	"version": "0.0.0",
+	"dependencies": {
+		"requirejs": "latest",
+		"jquery": "latest",
+		"underscore-amd": "latest",
+		"bootstrap": "latest",
+		"fontawesome": "latest"
+	}
+}
