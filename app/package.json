@@ -1,17 +1,17 @@
 {
-    "name": "Blog",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "start": "node ./bin/www"
-    },
-    "dependencies": {
-        "express": "latest",
-        "body-parser": "latest",
-        "cookie-parser": "latest",
-        "morgan": "latest",
-        "serve-favicon": "latest",
-        "debug": "latest",
-        "hjs": "latest"
-    }
+  "name": "Blog",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "latest",
+    "body-parser": "latest",
+    "cookie-parser": "latest",
+    "morgan": "latest",
+    "serve-favicon": "latest",
+    "debug": "latest",
+    "hjs": "latest"
+  }
 }
