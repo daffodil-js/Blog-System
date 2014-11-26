@@ -7,3 +7,4 @@ Node.js Blog system
 
 - $ npm install
 - $ bower install
+- $ node bin/www [run on port 3000]
