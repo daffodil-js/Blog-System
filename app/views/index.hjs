@@ -9,12 +9,28 @@
 
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
+<div class="container">
+<div class="row">
+	<div id="navigation"></div>
+	<div id="content"></div>
+	<div id="sidebar"></div>
+	<div id="footer"></div>
+</div>
+</div>
 
-	<section id="container">
-	</section>
+	<script>
+		$(function(){
+			$("#navigation").load("includes/navigation.html");
+			$("#content").load("includes/all-posts.html");
+			$("#sidebar").load("includes/sidebar.html");
+			$("#footer").load("includes/footer.html");
+		});
+	</script>
 
 	<script data-main="/js/main" src="/vendor/requirejs/require.js"></script>
 </body>
