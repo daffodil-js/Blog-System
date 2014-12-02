@@ -12,6 +12,6 @@
     "morgan": "latest",
     "serve-favicon": "latest",
     "debug": "latest",
-    "hjs": "latest"
+    "ejs": "latest"
   }
 }

@@ -1,2 +1,195 @@
 @import url('../vendor/bootstrap/dist/css/bootstrap.css');
 @import url('../vendor/fontawesome/css/font-awesome.css');
+
+/* Basic Styles */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+body > .container {
+    margin-top: 60px;
+}
+
+h2 a:hover {
+    text-decoration: none;
+}
+
+a {
+    transition: .5s all;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 15px;
+    background-color: #e3e3e3;
+}
+
+/* Socials */
+footer .btn {
+    padding: 6px 6px;
+    transition: .5s all;
+}
+
+.profile {
+    width: 88px;
+    text-align: right;
+    background-repeat: no-repeat;
+    background-size: 28px;
+    background-position: left center;
+    border-radius: 3px;
+}
+
+.avatar-container, .thumbnail > a > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.thumbnail > a > img {
+    margin-top: 10px;
+    width: 250px;
+    height: 200px;
+}
+
+.detailBox {
+    width: 320px;
+    border: 1px solid #bbb;
+    margin: 50px;
+}
+
+.titleBox {
+    background-color: #fdfdfd;
+    padding: 10px;
+}
+
+.titleBox label {
+    color: #444;
+    margin: 0;
+    display: inline-block;
+}
+
+.titleBox h2 {
+    display: inline-block;
+}
+
+.commentBox {
+    border-top: 1px dotted #bbb;
+}
+
+.commentList {
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+.commentList li {
+    height: 70px;
+    margin-top: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.commentList li:last-of-type {
+    border: 0;
+}
+
+.commentList li > div {
+    display: table-cell;
+}
+
+.commenterImage {
+    margin-right: 10px;
+    width: 50px;
+    height: 100%;
+    float: left;
+}
+
+.commenterImage img {
+    width: 100%;
+    border-radius: 15%;
+}
+
+.commentText {
+    float: left;
+}
+
+.commentText p {
+    margin: 5px 0 0 0;
+}
+
+.close {
+    display: block;
+    clear: both;
+}
+
+.sub-text {
+    color: #aaa;
+    font-family: verdana;
+    font-size: 11px;
+}
+
+.actionBox {
+    border-bottom: 1px dotted #bbb;
+    padding: 0 20px 0 20px;
+    margin-bottom: 10px;
+}
+
+/* Forms styles */
+.post-image {
+    width: 100%;
+    height: 350px;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.fa-times {
+    color: darkred;
+    display: block;
+    clear: both;
+    width: 12px;
+}
+
+.fa-times:hover {
+    cursor: pointer;
+}
+
+.reg-log-form input, .reg-log-form select {
+    width: 94%;
+}
+
+.green-tick {
+    color: rgb(3, 199, 3);
+    top: 8px;
+    left: -14px;
+}
+
+/* Img zoom effect */
+img {
+    opacity: 1;
+    -webkit-transform: scale(1, 1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1, 1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms;
+}
+
+img:hover, .navbar-brand:hover img {
+    opacity: .7;
+    -webkit-transform: scale(1.05, 1.07);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1.05, 1.07);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms;
+    position: relative;
+}
