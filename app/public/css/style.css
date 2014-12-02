@@ -11,16 +11,17 @@ body {
     margin-bottom: 60px;
 }
 
-body > .container {
+#content {
     margin-top: 60px;
-}
-
-h2 a:hover {
-    text-decoration: none;
 }
 
 a {
     transition: .5s all;
+}
+
+
+h2 a:hover {
+    text-decoration: none;
 }
 
 footer {
@@ -192,4 +193,8 @@ img:hover, .navbar-brand:hover img {
     -moz-transition-timing-function: ease-out;
     -moz-transition-duration: 250ms;
     position: relative;
+}
+
+.post-image {
+    margin-bottom: 20px;
 }
