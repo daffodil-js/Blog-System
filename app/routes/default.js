@@ -12,11 +12,33 @@ router.get('*', function (req, res) {
         title = 'Latest Posts';
     }
 
+    if (page === 'post') {
+        title = id;
+    }
+
     res.render('default', {
         page: 'pages/' + page,
         title: title,
         id: id
     });
 });
+
+
+router.post('/login', function(req,res){
+
+    var username = req.body.username,
+        password = req.body.password;
+
+    Parse.User.logIn(username, password, {
+        success: function(user) {
+            res.redirect('/');
+        },
+        error: function(user, error) {
+            res.send(error);
+            //res.redirect('/login');
+        }
+    });
+});
+
 
 module.exports = router;

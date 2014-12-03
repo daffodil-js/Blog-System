@@ -6,6 +6,7 @@
     "jquery": "latest",
     "underscore-amd": "latest",
     "bootstrap": "latest",
+    "bootstrap-validator": "latest",
     "fontawesome": "latest"
   }
 }

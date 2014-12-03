@@ -7,8 +7,14 @@ var express = require('express');
     routes = require('./routes/default'),
     app = express();
 
+GLOBAL.Parse = require('parse').Parse;
+Parse.initialize('App ID', 'mrbVNvY516kDmzg6CscXMeyiHZpWTpkfqwR92Zrs');
+
+// The Blob settings
+app.set('title', 'The Blob');
+app.set('email', 'blob@theblob.com');
+
 // view engine setup
-//app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(favicon(__dirname + '/public/favicon.ico'));
