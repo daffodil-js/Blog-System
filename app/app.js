@@ -8,7 +8,7 @@ var express = require('express');
     app = express();
 
 GLOBAL.Parse = require('parse').Parse;
-Parse.initialize('App ID', 'mrbVNvY516kDmzg6CscXMeyiHZpWTpkfqwR92Zrs');
+Parse.initialize('TgePKQZ0V5ILd4oSi6iXce2x5e2hYnJdpb26am3a', 'mrbVNvY516kDmzg6CscXMeyiHZpWTpkfqwR92Zrs', 'yfYW2nP3QPIAGEdvSOCcaG5rljfOJUybHMGq0Opt');
 
 // The Blob settings
 app.set('title', 'The Blob');

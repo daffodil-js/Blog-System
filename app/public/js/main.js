@@ -8,11 +8,17 @@ require.config({
 });
 
 require(['jquery'], function ($) {
-    require(['validator', 'bootstrap'], function (validator, bootstrap) {
+    require(['validator', 'bootstrap', 'validator'], function (validator, bootstrap, validator) {
         $(function () {
             'use strict';
 
             registerEventHandlers();
+
+            // Page show-up
+            $('#status').fadeOut();
+            $('#preloader').delay(150).fadeOut('slow');
+            $('body').delay(150).css({'overflow': 'visible'});
+
 
             // target _blank to all external links
             $('body a').each(function () {
@@ -21,6 +27,7 @@ require(['jquery'], function ($) {
                 }
             });
 
+
             // Setup Parse.com API
             $.ajaxSetup({
                 headers: {
@@ -28,6 +35,7 @@ require(['jquery'], function ($) {
                     'X-Parse-REST-API-Key': 'nl4VVJVTrFoAE6ts5ooqGYQahRBc084EHc3IMGRg'
                 }
             });
+
 
             // Get Parse.com data
             function getData(table) {

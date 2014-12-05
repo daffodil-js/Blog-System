@@ -1,21 +1,32 @@
-<div class="col-md-12">
-    <div class="register-form col-md-12">
-        <label for="register-username" class="control-label col-md-2">User Name</label>
-        <div class="col-md-10">
-            <input type="text" id="register-username" class="form-control" placeholder="User Name"/>
-        </div>
-
-        <label for="register-password" class="control-label col-md-2">Password</label>
-        <div class="col-md-10">
-            <input type="text" id="register-password" class="form-control" placeholder="Password"/>
-        </div>
-
-        <label class="control-label col-md-2" for="repeat-register-password">Repeat Password</label>
-        <div class="col-md-10">
-            <input type="text" id="repeat-register-password" class="form-control" placeholder="Repeat Password"/>
-        </div>
-
-        <button class="btn btn-primary" id="register-submit">Submit</button>
-    </div>
+<div class="well">
+    <p class="lead">
+        <em>You already have an account?<br>
+            <a href="/login">Login here >>></a></em>
+    </p>
 </div>
 
+<div class="contact-form col-md-10">
+    <form role="form" data-toggle="validator">
+        <div class="form-group">
+            <label for="username" class="control-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Name" pattern="^([A-z]){2,20}$" data-error="The name must be between 2 and 20 letters!" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="control-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" data-error="The email address is invalid!" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" class="form-control" id="password" data-minlength="6" data-error="The password must be at least 6 characters!" placeholder="************" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password-rep" class="control-label">Repeat Password</label>
+            <input type="password" class="form-control" id="password-rep" data-match="#password"  data-match-error="The password don't match!" placeholder="************" required>
+        </div>
+
+        <button class="btn btn-primary pull-right">Register</button>
+    </form>
+</div>

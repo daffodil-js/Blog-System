@@ -1,17 +1,22 @@
-<div class="col-md-12">
-    <div class="login-form col-md-12">
+<div class="well">
+    <p class="lead">
+        <em>You don't have account?<br>
+            <a href="/register">Register now >>></a></em>
+    </p>
+</div>
 
-        <label for="login-username" class="control-label col-md-2">User Name</label>
-        <div class="col-md-10">
-            <input class="form-control" type="text" id="login-username" placeholder="User Name"/>
+<div class="contact-form col-md-10">
+    <form role="form" data-toggle="validator">
+        <div class="form-group">
+            <label for="username" class="control-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Name" pattern="^([A-z]){2,20}$" data-error="The username must be between 2 and 20 letters!" required>
         </div>
 
-        <label for="login-password" class="control-label col-md-2">Password</label>
-        <div class="col-md-10">
-            <input class="form-control" type="text" id="login-password" placeholder="Password"/>
+        <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" class="form-control" id="password" data-minlength="6" data-error="The password must be at least 6 characters!" placeholder="************" required>
         </div>
 
-        <button class="btn btn-primary" id="login-submit">Submit</button>
-
-    </div>
+        <button class="btn btn-primary pull-right">Login</button>
+    </form>
 </div>
