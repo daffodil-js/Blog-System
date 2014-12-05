@@ -94,6 +94,7 @@ require(['jquery'], function ($) {
                         console.log('user successfully logged');
                         sessionStorage.userId = data.objectId;
                         sessionStorage.sessionToken = data.sessionToken;
+                        window.location.replace("/user");
                     },
                     error: function() {
                         console.log('something happened');
