@@ -58,12 +58,8 @@ require(['jquery'], function ($) {
 
             function registerEventHandlers() {
                 //Attach event handlers to login and register buttons
-                $(document).on('click', '#register-submit', function(){
-                    registerUser();
-                });
-                $(document).on('click', '#login-submit', function() {
-                    loginUser();
-                })
+                $(document).on('click', '#register-submit', function(){ registerUser(); });
+                $(document).on('click', '#login-submit', function() { loginUser(); })
             }
 
             //Create new user on register button click
@@ -89,9 +85,15 @@ require(['jquery'], function ($) {
                 var password = $('#login-password').val();
                 $.ajax({
                     method: "GET",
-                    url: 'https://api.parse.com/1/classes/_User',
+                    url: 'https://api.parse.com/1/login',
+                    data: {
+                        username: username,
+                        password: password
+                    },
                     success: function(data) {
                         console.log('user successfully logged');
+                        sessionStorage.userId = data.objectId;
+                        sessionStorage.sessionToken = data.sessionToken;
                     },
                     error: function() {
                         console.log('something happened');
