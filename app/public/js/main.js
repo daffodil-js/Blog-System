@@ -12,6 +12,8 @@ require(['jquery'], function ($) {
         $(function () {
             'use strict';
 
+            registerEventHandlers();
+
             // target _blank to all external links
             $('body a').each(function () {
                 if (this.href.indexOf(location.hostname) === -1) {
@@ -54,6 +56,48 @@ require(['jquery'], function ($) {
             $('.form-group').append('<div class="help-block with-errors"></div>');
             $('form').validator();
 
+            function registerEventHandlers() {
+                //Attach event handlers to login and register buttons
+                $(document).on('click', '#register-submit', function(){
+                    registerUser();
+                });
+                $(document).on('click', '#login-submit', function() {
+                    loginUser();
+                })
+            }
+
+            //Create new user on register button click
+            function registerUser() {
+                var username = $('#register-username').val();
+                var password = $('#register-password').val();
+                $.ajax({
+                    method: "POST",
+                    url: 'https://api.parse.com/1/classes/_User',
+                    data: JSON.stringify({username: username, password: password}),
+                    success: function(data) {
+                        console.log('user created');
+                    },
+                    error: function() {
+                        console.log('something happened');
+                    }
+                });
+            }
+
+            //Login user on login button click
+            function loginUser() {
+                var username = $('#login-username').val();
+                var password = $('#login-password').val();
+                $.ajax({
+                    method: "GET",
+                    url: 'https://api.parse.com/1/classes/_User',
+                    success: function(data) {
+                        console.log('user successfully logged');
+                    },
+                    error: function() {
+                        console.log('something happened');
+                    }
+                });
+            }
         }());
     });
 
