@@ -6,7 +6,7 @@
 </div>
 
 <div class="contact-form col-md-10">
-    <form role="form" data-toggle="validator">
+    <form method="post" id="register" role="form" data-toggle="validator">
         <div class="form-group">
             <label for="username" class="control-label">Username</label>
             <input type="text" class="form-control" id="username" placeholder="Name" pattern="^([A-z]){2,20}$" data-error="The name must be between 2 and 20 letters!" required>
@@ -27,6 +27,6 @@
             <input type="password" class="form-control" id="password-rep" data-match="#password"  data-match-error="The password don't match!" placeholder="************" required>
         </div>
 
-        <button class="btn btn-primary pull-right">Register</button>
+        <input type="submit" class="btn btn-primary pull-right" value="Register">
     </form>
 </div>

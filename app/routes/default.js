@@ -3,6 +3,7 @@ var express = require('express'),
 
 /* GET pages */
 router.get('*', function (req, res) {
+
     var page = req.originalUrl.split('/')[1],
         title = page.charAt(0).toUpperCase() + page.slice(1),
         id = req.originalUrl.split('/')[2];
@@ -37,9 +38,10 @@ router.post('/register', function (req, res) {
 
     user.signUp(null, {
         success: function (user) {
-            console.log('registered');
+            res.redirect('/');
         },
         error: function (user, error) {
+            res.redirect('/contact');
             console.log("Error: " + error.code + " " + error.message);
         }
     });
@@ -51,10 +53,10 @@ router.post('/login', function (req, res) {
 
     Parse.User.logIn(username, password, {
         success: function(user) {
-            res.send(JSON.stringify(user));
+            res.redirect('/');
         },
         error: function(user, error) {
-            res.send(error);
+            res.redirect('/login');
         }
     });
 });

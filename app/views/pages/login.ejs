@@ -6,17 +6,17 @@
 </div>
 
 <div class="contact-form col-md-10">
-    <form role="form" data-toggle="validator">
+    <form method="post" role="form" id="login" data-toggle="validator">
         <div class="form-group">
             <label for="username" class="control-label">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Name" pattern="^([A-z]){2,20}$" data-error="The username must be between 2 and 20 letters!" required>
+            <input type="text" name="username" class="form-control" id="username" placeholder="Name" pattern="^([A-z]){2,20}$" data-error="The username must be between 2 and 20 letters!" required>
         </div>
 
         <div class="form-group">
             <label for="password" class="control-label">Password</label>
-            <input type="password" class="form-control" id="password" data-minlength="6" data-error="The password must be at least 6 characters!" placeholder="************" required>
+            <input type="password" name="password" class="form-control" id="password" data-minlength="6" data-error="The password must be at least 6 characters!" placeholder="************" required>
         </div>
 
-        <button class="btn btn-primary pull-right">Login</button>
+        <button type="submit" class="btn btn-primary pull-right">Login</button>
     </form>
 </div>
