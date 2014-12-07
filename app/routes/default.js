@@ -11,6 +11,24 @@ router.get('*', function (req, res) {
     if (page === '' || page === 'home') {
         page = 'home';
         title = 'Latest Posts';
+
+
+        var Post = Parse.Object.extend('Post');
+        var query = new Parse.Query(Post);
+
+        query.find({
+            success: function(results) {
+                for (var i = 0; i < results.length; i++) {
+                    var object = results[i];
+
+                    title = object.id + ' - ' + object.get('title');
+                }
+            },
+            error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+
     }
 
     if (page === 'post') {
@@ -22,6 +40,12 @@ router.get('*', function (req, res) {
         title: title,
         id: id
     });
+});
+
+router.get('/', function (req, res) {
+
+
+
 });
 
 router.post('/register', function (req, res) {
@@ -41,7 +65,7 @@ router.post('/register', function (req, res) {
             res.redirect('/');
         },
         error: function (user, error) {
-            res.redirect('/contact');
+            res.redirect('/register');
             console.log("Error: " + error.code + " " + error.message);
         }
     });
