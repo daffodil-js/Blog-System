@@ -5,10 +5,12 @@ var express = require('express');
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     routes = require('./routes/default'),
+    adminRoutes = require('./routes/admin'),
     app = express();
 
 GLOBAL.Parse = require('parse').Parse;
 Parse.initialize('TgePKQZ0V5ILd4oSi6iXce2x5e2hYnJdpb26am3a', 'mrbVNvY516kDmzg6CscXMeyiHZpWTpkfqwR92Zrs', 'yfYW2nP3QPIAGEdvSOCcaG5rljfOJUybHMGq0Opt');
+
 
 // The Blob settings
 app.set('title', 'The Blob');
@@ -24,7 +26,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/admin', adminRoutes);
 app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

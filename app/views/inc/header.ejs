@@ -34,9 +34,18 @@
                     <ul class="dropdown-menu">
                         <% if(Parse.User.current()) { %>
 
-                        <li><a href=" <%= Parse.User.current().getUsername() %>/profile">Profile</a></li>
+                        <% var query = (new Parse.Query(Parse.Role));
+                            query.equalTo("name", "admins");
+                            query.equalTo("users", Parse.User.current());
+                                query.first().then(function (adminRole) {
+                        if (adminRole) { %>
 
-                        <!--TODO: Check for admin level and add admin menu-->
+                        <li><a href="/admin">Admin</a></li>
+
+                        <% } }); %>
+
+                        <li><a href=" <%= Parse.User.current().getUsername() %>/profile">Profile</a></li>
+                        <li><a href="/logout">Logout</a></li>
 
                         <% } else { %>
                         <li><a href="/login">Login</a></li>

@@ -12,27 +12,30 @@ router.get('*', function (req, res) {
         page = 'home';
         title = 'Latest Posts';
 
-
-        var Post = Parse.Object.extend('Post');
-        var query = new Parse.Query(Post);
-
-        query.find({
-            success: function(results) {
-                for (var i = 0; i < results.length; i++) {
-                    var object = results[i];
-
-                    title = object.id + ' - ' + object.get('title');
-                }
-            },
-            error: function(error) {
-                alert("Error: " + error.code + " " + error.message);
-            }
-        });
-
+        //var Post = GLOBAL.Parse.Object.extend('Post'),
+        //    query = new Parse.Query(Post),
+        //    posts = [];
+        //
+        //query.find({
+        //    success: function (results) {
+        //        for (var i = 0; i < results.length; i++) {
+        //            var object = results[i];
+        //            posts.push(object.get('title'));
+        //        }
+        //    },
+        //    error: function (error) {
+        //        alert("Error: " + error.code + " " + error.message);
+        //    }
+        //});
     }
 
     if (page === 'post') {
         title = id;
+    }
+
+    if(page === 'logout') {
+        Parse.User.logOut();
+        res.redirect('/');
     }
 
     res.render('default', {
@@ -42,10 +45,18 @@ router.get('*', function (req, res) {
     });
 });
 
-router.get('/', function (req, res) {
+router.post('/login', function (req, res) {
+    var username = req.body.username,
+        password = req.body.password;
 
-
-
+    Parse.User.logIn(username, password, {
+        success: function (user) {
+            res.redirect('/');
+        },
+        error: function (user, error) {
+            res.redirect('/login');
+        }
+    });
 });
 
 router.post('/register', function (req, res) {
@@ -53,7 +64,6 @@ router.post('/register', function (req, res) {
     var username = req.body.username,
         password = req.body.password,
         email = req.body.email,
-        //website = req.body.website,
         user = new Parse.User();
 
     user.set('username', username);
@@ -67,20 +77,6 @@ router.post('/register', function (req, res) {
         error: function (user, error) {
             res.redirect('/register');
             console.log("Error: " + error.code + " " + error.message);
-        }
-    });
-});
-
-router.post('/login', function (req, res) {
-    var username = req.body.username,
-        password = req.body.password;
-
-    Parse.User.logIn(username, password, {
-        success: function(user) {
-            res.redirect('/');
-        },
-        error: function(user, error) {
-            res.redirect('/login');
         }
     });
 });
