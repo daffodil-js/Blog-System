@@ -34,18 +34,11 @@
                     <ul class="dropdown-menu">
                         <% if(Parse.User.current()) { %>
 
-                        <% var query = (new Parse.Query(Parse.Role));
-                            query.equalTo("name", "admins");
-                            query.equalTo("users", Parse.User.current());
-                                query.first().then(function (adminRole) {
-                            console.log(adminRole);
-                        if (adminRole) { %>
-
+                        <%  if (Parse.User.current().getUsername() === 'admin') { %>
                         <li><a href="/admin">Admin</a></li>
+                        <% } %>
 
-                        <% } }); %>
-
-                        <li><a href=" <%= Parse.User.current().getUsername() %>/profile">Profile</a></li>
+                        <li><a href="/profile">Profile</a></li>
                         <li><a href="/logout">Logout</a></li>
 
                         <% } else { %>

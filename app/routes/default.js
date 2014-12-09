@@ -36,7 +36,8 @@ router.get('*', function (req, res) {
             }
         });
     }
-    else if ((page === 'login' || page === 'register') && Parse.User.current()) {
+    else if (((page === 'login' || page === 'register') && Parse.User.current()) ||
+        (page === 'profile' && !Parse.User.current())) {
         res.redirect('/');
     }
     else if (page === 'logout') {
@@ -60,7 +61,7 @@ router.post('/post/:id', function (req, res) {
 
     newComment.set('title', title);
     newComment.set('content', content);
-    newComment.set('user', Parse.User.current().id);
+    //newComment.set('user', Parse.User.current());
 
     newComment.save(null, {
         success: function(newComment) {

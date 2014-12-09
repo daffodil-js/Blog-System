@@ -1,21 +1,31 @@
 @import url('../vendor/bootstrap/dist/css/bootstrap.css');
 @import url('../vendor/fontawesome/css/font-awesome.css');
 
-html {
-    overflow-y: scroll;
-}
 
+html,
 body {
+    height: 100%;
+    overflow-y: scroll;
     position: relative;
     margin-bottom: 60px;
+}
+
+#content {
+    margin-top: 60px;
     min-height: 100%;
-    overflow: hidden;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto 0;
+}
+footer {
+    height: 60px;
+    width: 101%;
+    padding-top: 15px;
+    background-color: #e3e3e3;
 }
 
 /* Basic Styles */
-#content {
-    margin-top: 60px;
-}
+
 
 /* Preloader */
 #preloader {
@@ -48,18 +58,14 @@ h2 a:hover {
     text-decoration: none;
 }
 
-footer {
-    position: absolute;
-    bottom: -25%;
-    width: 100%;
-    padding-top: 15px;
-    background-color: #e3e3e3;
-}
-
 /* Socials */
 footer .btn {
     padding: 6px 6px;
     transition: .5s all;
+}
+
+.container {
+    min-height: 100%;
 }
 
 .profile {
