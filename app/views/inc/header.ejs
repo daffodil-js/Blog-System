@@ -38,6 +38,7 @@
                             query.equalTo("name", "admins");
                             query.equalTo("users", Parse.User.current());
                                 query.first().then(function (adminRole) {
+                            console.log(adminRole);
                         if (adminRole) { %>
 
                         <li><a href="/admin">Admin</a></li>

@@ -1,6 +1,6 @@
 <% for (var i = 0; i < posts.length; i++) {
     var post = posts[i],
-        link = '/post/' + post['id'] + '-' + post.get('slug');
+            link = '/post/' + post['id'] + '-' + post.get('slug');
 %>
 
 <article>
@@ -26,9 +26,34 @@
     <p class="lead"><%= post.get('body') %></p>
 </article>
 
-<% } if (title === 'Post') { %>
+<% } if (title === 'Post') {
+if (Parse.User.current()) { %>
 <% include inc/comment.ejs %>
+
 <% } else { %>
+
+<div class="well">
+    <p class="lead">
+        <em>Please, <a href="/login">Login</a> or <a href="/register">Register</a> to make a comment.</em>
+    </p>
+</div>
+
+<!-- Posted Comments -->
+<% if(post.get('comment')) { %>
+
+<div class="media">
+    <a class="pull-left" href="#">
+        <img class="media-object" src="http://placehold.it/64x64" alt="">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading"><%= post.get('comment').get('title') %>
+            <small><%= (post.get('comment')['createdAt'].toString()).substr(0, 25) %></small>
+        </h4>
+        <%= post.get('comment').get('content') %>
+    </div>
+</div>
+
+<% } } } else { %>
 
 <hr>
 <ul class="pager">

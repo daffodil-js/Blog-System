@@ -4,36 +4,40 @@ var express = require('express'),
 /* GET pages */
 router.get('*', function (req, res) {
     var url = req.originalUrl.split('/'),
-        page = url[1],
-        title = page.charAt(0).toUpperCase() + page.slice(1),
+        page = url[1] || 'home',
+        title = page.charAt(0).toUpperCase() + page.slice(1) || 'Home',
         Category = GLOBAL.Parse.Object.extend('Category'),
         categoryQuery = new Parse.Query(Category);
 
-    if (page === '' || page === 'home' || page === 'post') {
-        page = page || 'home';
-        title = title || 'Home';
-
+    if (!page || page === 'home' || page === 'post') {
         var Post = GLOBAL.Parse.Object.extend('Post'),
             postQuery = new Parse.Query(Post);
         postQuery.include('user');
+        postQuery.include('comment');
 
         if (page === 'post') {
-            page = 'home';
             postQuery.equalTo('objectId', url[2].split('-')[0]);
         }
 
+        if (page === 'category') {
+            categoryQuery.equalTo('category', url[2].split('-')[0]);
+        }
+
         postQuery.find({
-            success: function (result) {
+            success: function (posts) {
                 res.render('default', {
-                    page: 'pages/' + page,
+                    page: 'pages/home',
                     title: title,
-                    posts: result
+                    posts: posts
                 });
             },
             error: function () {
 
             }
         });
+    }
+    else if ((page === 'login' || page === 'register') && Parse.User.current()) {
+        res.redirect('/');
     }
     else if (page === 'logout') {
         Parse.User.logOut();
@@ -45,6 +49,29 @@ router.get('*', function (req, res) {
             title: title
         });
     }
+});
+
+router.post('/post/:id', function (req, res) {
+    var title = req.body.title,
+        content = req.body.content;
+
+    var Comment = Parse.Object.extend('Comment'),
+        newComment = new Comment();
+
+    newComment.set('title', title);
+    newComment.set('content', content);
+    newComment.set('user', Parse.User.current().id);
+
+    newComment.save(null, {
+        success: function(newComment) {
+            res.redirect('/post/' + req.originalUrl.split('/')[2]);
+            console.log('New object created with objectId: ' + newComment.id);
+        },
+        error: function(newPost, error) {
+            res.redirect('/');
+            console.log('Failed to create new object, with error code: ' + error.message);
+        }
+    });
 });
 
 router.post('/login', function (req, res) {

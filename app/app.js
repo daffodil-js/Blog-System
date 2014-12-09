@@ -13,7 +13,7 @@ Parse.initialize('TgePKQZ0V5ILd4oSi6iXce2x5e2hYnJdpb26am3a', 'mrbVNvY516kDmzg6Cs
 
 // The Blob settings
 app.set('title', 'The Blob');
-app.set('email', 'the@blob.com');
+app.set('email', 't@theblob.com');
 
 // view engine setup
 app.set('view engine', 'ejs');
@@ -42,10 +42,12 @@ app.use(function (req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+        //res.render('error', {
+        //    message: err.message,
+        //    error: err
+        //});
+
+        res.redirect('/');
     });
 }
 
@@ -53,10 +55,12 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+    //res.render('error', {
+    //    message: err.message,
+    //    error: {}
+    //});
+
+    res.redirect('/');
 });
 
 module.exports = app;
