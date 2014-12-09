@@ -11,10 +11,9 @@ var express = require('express');
 GLOBAL.Parse = require('parse').Parse;
 Parse.initialize('TgePKQZ0V5ILd4oSi6iXce2x5e2hYnJdpb26am3a', 'mrbVNvY516kDmzg6CscXMeyiHZpWTpkfqwR92Zrs', 'yfYW2nP3QPIAGEdvSOCcaG5rljfOJUybHMGq0Opt');
 
-
 // The Blob settings
 app.set('title', 'The Blob');
-app.set('email', 'blob@theblob.com');
+app.set('email', 'the@blob.com');
 
 // view engine setup
 app.set('view engine', 'ejs');
@@ -28,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRoutes);
 app.use('/', routes);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

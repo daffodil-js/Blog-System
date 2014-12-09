@@ -28,7 +28,6 @@ require(['jquery'], function ($) {
             $('.form-group').append('<div class="help-block with-errors"></div>');
             $('form').validator();
 
-
         }());
     });
 });

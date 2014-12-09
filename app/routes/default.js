@@ -3,46 +3,48 @@ var express = require('express'),
 
 /* GET pages */
 router.get('*', function (req, res) {
-
-    var page = req.originalUrl.split('/')[1],
+    var url = req.originalUrl.split('/'),
+        page = url[1],
         title = page.charAt(0).toUpperCase() + page.slice(1),
-        id = req.originalUrl.split('/')[2];
+        Category = GLOBAL.Parse.Object.extend('Category'),
+        categoryQuery = new Parse.Query(Category);
 
-    if (page === '' || page === 'home') {
-        page = 'home';
-        title = 'Latest Posts';
+    if (page === '' || page === 'home' || page === 'post') {
+        page = page || 'home';
+        title = title || 'Home';
 
-        //var Post = GLOBAL.Parse.Object.extend('Post'),
-        //    query = new Parse.Query(Post),
-        //    posts = [];
-        //
-        //query.find({
-        //    success: function (results) {
-        //        for (var i = 0; i < results.length; i++) {
-        //            var object = results[i];
-        //            posts.push(object.get('title'));
-        //        }
-        //    },
-        //    error: function (error) {
-        //        alert("Error: " + error.code + " " + error.message);
-        //    }
-        //});
+        var Post = GLOBAL.Parse.Object.extend('Post'),
+            postQuery = new Parse.Query(Post);
+        postQuery.include('user');
+
+        if (page === 'post') {
+            page = 'home';
+            postQuery.equalTo('objectId', url[2].split('-')[0]);
+        }
+
+        postQuery.find({
+            success: function (result) {
+                res.render('default', {
+                    page: 'pages/' + page,
+                    title: title,
+                    posts: result
+                });
+            },
+            error: function () {
+
+            }
+        });
     }
-
-    if (page === 'post') {
-        title = id;
-    }
-
-    if(page === 'logout') {
+    else if (page === 'logout') {
         Parse.User.logOut();
         res.redirect('/');
     }
-
-    res.render('default', {
-        page: 'pages/' + page,
-        title: title,
-        id: id
-    });
+    else {
+        res.render('default', {
+            page: 'pages/' + page,
+            title: title
+        });
+    }
 });
 
 router.post('/login', function (req, res) {

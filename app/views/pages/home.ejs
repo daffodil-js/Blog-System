@@ -1,35 +1,41 @@
+<% for (var i = 0; i < posts.length; i++) {
+    var post = posts[i],
+        link = '/post/' + post['id'] + '-' + post.get('slug');
+%>
+
 <article>
-    <h2><a href="/post">Title</a></h2>
+    <h2><a href="<%= link %>"><%= post.get('title') %></a></h2>
 
     <div class="row">
         <div class="col-sm-6 col-md-5">
-            <span class="glyphicon glyphicon-bookmark"></span> <a href="#">Tags</a>
+            <span class="glyphicon glyphicon-bookmark"></span> <a href="#"><%= post.get('tags') %></a>
         </div>
         <div class="col-sm-6 col-md-7">
-            <span class="glyphicon glyphicon-pencil"></span> <a href="#">Comments</a>
-            &nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> date by User <i class="fa fa-eye"></i> 1
-            views
+            <span class="glyphicon glyphicon-pencil"></span> <a href="/post/<%= post['id'] %>#comments">Comments</a>
+            &nbsp;&nbsp;<span
+                    class="glyphicon glyphicon-time"></span> <%= (post['createdAt'].toString()).substr(0, 25) %>
+            by <%= post.get('user').getUsername() %>
+            <!--<i class="fa fa-eye"></i> 1 views-->
         </div>
     </div>
 
     <hr>
 
-    <a href="/post"><img src="#" class="img-responsive post-image"></a>
+    <a href="<%= link %>"><img src="<%= post.get('image') %>" class="img-responsive post-image"></a>
 
-
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad dolore eaque ipsum libero,
-        magnam minus necessitatibus nisi odit placeat possimus, quaerat quidem quos? Animi, exercitationem
-        perspiciatis placeat sunt temporibus ullam?</p>
-
-    <p class="text-right">
-        <a href="#">
-            continue reading...
-        </a>
-    </p>
+    <p class="lead"><%= post.get('body') %></p>
 </article>
+
+<% } if (title === 'Post') { %>
+<% include inc/comment.ejs %>
+<% } else { %>
+
 <hr>
 <ul class="pager">
     <li class="previous"><a href="#">&larr; Previous</a></li>
     <li class="next"><a href="#">Next &rarr;</a></li>
 </ul>
 <hr>
+
+<% } %>
+

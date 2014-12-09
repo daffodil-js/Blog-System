@@ -1,10 +1,11 @@
 <aside class="col-md-4">
 
-    <% if(!Parse.User.current()) { %>
+    <% if(!Parse.User.current() && title !== 'Register') { %>
     <!-- Register label -->
     <div class="well text-center">
         <p class="lead">
-            Don't want to miss updates? Please click the below button!
+            Get full access on the website.
+            You can do that in just one step!
         </p>
         <a href="/register" class="btn btn-primary btn-lg">Register Now!</a>
     </div>
